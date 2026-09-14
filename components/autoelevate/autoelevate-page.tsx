@@ -14,6 +14,7 @@ import { SiteImage } from "@/components/autoelevate/site-image";
 import { TestimonialsSection } from "@/components/autoelevate/testimonials-section";
 import { WorkSection } from "@/components/autoelevate/work-section";
 import { WhyAutoElevateSection } from "@/components/autoelevate/why-autoelevate-section";
+import { SITE_CONFIG } from "@/data/site-config";
 import { SITE_IMAGES } from "@/data/site-images";
 import { SITE_VIDEOS } from "@/data/site-videos";
 import {
@@ -521,11 +522,11 @@ const AutoElevatePage = (): React.ReactElement => {
           © 2026 AutoElevate, a brand of{" "}
           <a
             className="footer-brand-link"
-            href="https://www.rohtiqlabs.com/"
+            href={SITE_CONFIG.parentOrganization.url}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Rohtiq Labs
+            {SITE_CONFIG.parentOrganization.name}
           </a>
           . All rights reserved.
         </p>
@@ -538,7 +539,7 @@ const AutoElevatePage = (): React.ReactElement => {
         </div>
         <div className="footer-socials">
           <a
-            href="https://www.instagram.com/autoelevate.rl/"
+            href={SITE_CONFIG.social.instagram}
             target="_blank"
             rel="noopener noreferrer"
           >

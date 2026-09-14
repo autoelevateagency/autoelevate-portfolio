@@ -38,6 +38,9 @@ export const metadata: Metadata = {
   category: "Digital Marketing",
   alternates: {
     canonical: "/",
+    languages: {
+      "en-US": "/",
+    },
   },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
@@ -78,6 +81,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
+    // Add Google Search Console verification token when available:
     // google: "YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_ID",
   },
 };

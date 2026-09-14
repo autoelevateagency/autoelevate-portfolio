@@ -1,7 +1,13 @@
 import { SITE_CONFIG, SITE_ROUTES } from "@/data/site-config";
 
-const absoluteUrl = (path: string): string =>
-  `${SITE_CONFIG.url}${path.startsWith("/") ? path : `/${path}`}`;
+const absoluteUrl = (path: string): string => {
+  if (!path || path === "/") {
+    return SITE_CONFIG.url;
+  }
+
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  return `${SITE_CONFIG.url}${normalizedPath}`;
+};
 
 export const getOrganizationSchema = (): Record<string, unknown> => ({
   "@context": "https://schema.org",

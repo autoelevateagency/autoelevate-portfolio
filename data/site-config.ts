@@ -1,4 +1,7 @@
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://autoelevate.rohtiqlabs.com/";
+const rawSiteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://goautoelevate.com";
+
+const siteUrl = rawSiteUrl.replace(/\/+$/, "");
 
 export const SITE_CONFIG = {
   url: siteUrl,
@@ -15,10 +18,10 @@ export const SITE_CONFIG = {
   phone: "+923239675581",
   phoneDisplay: "+92 323 9675581",
   whatsappUrl: "https://wa.me/923239675581",
-  email: "info@rohtiqlabs.com",
+  email: "info@goautoelevate.com",
   parentOrganization: {
     name: "Rohtiq Labs",
-    url: "https://www.rohtiqlabs.com/",
+    url: "https://www.rohtiqlabs.com",
   },
   address: {
     streetAddress: "Street #08, H-block, North Nazimabad",
@@ -47,6 +50,8 @@ export const SITE_CONFIG = {
     instagram: "https://www.instagram.com/autoelevate.rl/",
   },
   keywords: [
+    "AutoElevate",
+    "goautoelevate",
     "luxury automotive digital agency",
     "auto detailing website design",
     "ceramic coating marketing agency",
