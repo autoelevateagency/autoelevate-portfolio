@@ -439,19 +439,6 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     ),
   },
   {
-    id: "cwork-production",
-    name: "Cwork Production",
-    description:
-      "Live-event laser and SFX production concept — included in the wider concept archive; not an automotive studio niche.",
-    previewUrl: "https://cwork-production.vercel.app/",
-    domain: "cwork-production.vercel.app",
-    niches: ["other"],
-    label: "Website concept",
-    ...shot("cwork-production",
-      "Cwork Production homepage hero — live-event production concept layout",
-    ),
-  },
-  {
     id: "autoelevate-portfolio",
     name: "AutoElevate Portfolio",
     description:
@@ -524,13 +511,9 @@ export const PORTFOLIO_INVENTORY_GAPS = [
 
 export const CLIENT_PORTFOLIO = PORTFOLIO.filter((item) => !item.isAgencySite);
 
-/** Automotive studio concepts — excludes adjacent non-auto archive items. */
+/** Automotive studio concepts — excludes agency / non-auto entries. */
 export const AUTOMOTIVE_PORTFOLIO = CLIENT_PORTFOLIO.filter(
   (item) => item.niches[0] !== "other",
-);
-
-export const ADJACENT_PORTFOLIO = CLIENT_PORTFOLIO.filter(
-  (item) => item.niches[0] === "other",
 );
 
 export const HOME_FEATURED_WORK = CLIENT_PORTFOLIO.filter(

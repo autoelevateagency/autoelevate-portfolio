@@ -318,6 +318,9 @@ export const PortfolioSlider = forwardRef<
       </div>
 
       <div className="work-slider-footer">
+        <p className="work-slider-hint" aria-hidden="true">
+          Swipe for more →
+        </p>
         <div
           className="work-slider-progress"
           role="progressbar"

@@ -14,7 +14,7 @@
   --soft-charcoal: var(--carbon-olive);
   --pure-white: #ffffff;
 
-  /* Accent roles â champagne never for small text on porcelain */
+  /* Accent roles Ã¢ÂÂ champagne never for small text on porcelain */
   --accent-on-light: var(--burnished-oxide);
   --accent-on-dark: var(--muted-champagne);
   --accent-line: var(--muted-champagne);
@@ -45,7 +45,7 @@
   --ease-premium: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* Light editorial â Warm Porcelain */
+/* Light editorial Ã¢ÂÂ Warm Porcelain */
 .theme-ivory {
   --black: var(--warm-porcelain);
   --deep: #e5e1d8;
@@ -91,7 +91,7 @@
   color: var(--mineral-green);
 }
 
-/* Carbon Olive â alternate dark */
+/* Carbon Olive Ã¢ÂÂ alternate dark */
 .theme-graphite {
   --black: var(--carbon-olive);
   --deep: var(--deep-graphite);
@@ -113,7 +113,7 @@
   color: var(--warm-porcelain);
 }
 
-/* Mineral Green â primary dark */
+/* Mineral Green Ã¢ÂÂ primary dark */
 .theme-deep {
   --black: var(--mineral-green);
   --deep: var(--deep-graphite);
@@ -1019,7 +1019,7 @@ body.has-custom-cursor .cursor-ring {
 }
 
 .brand-marquee-item::after {
-  content: "â";
+  content: "Ã¢ÂÂ";
   font-size: 7px;
   color: rgba(41, 46, 43, 0.45);
   transform: translateY(-1px);
@@ -1779,7 +1779,7 @@ body.has-custom-cursor .cursor-ring {
   color: var(--accent-on-dark);
 }
 
-/* ââ Selected Work â Carbon Olive horizontal slider ââ */
+/* Ã¢ÂÂÃ¢ÂÂ Selected Work Ã¢ÂÂ Carbon Olive horizontal slider Ã¢ÂÂÃ¢ÂÂ */
 #work {
   padding: clamp(80px, 12vw, 140px) 0 clamp(56px, 9vw, 96px);
   background: var(--carbon-olive);
@@ -2212,6 +2212,96 @@ body.has-custom-cursor .cursor-ring {
   padding-inline-end: max(var(--section-x), calc(100% - min(78vw, 860px) + 24px));
 }
 
+/*
+ * Service Concepts sliders sit on Warm Porcelain — dark ink required.
+ * (Homepage #work + graphite archive keep champagne-on-dark tokens.)
+ */
+.work-archive-section:not(.inner-section--graphite) .work-slide {
+  opacity: 0.72;
+  gap: 12px;
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-slide.is-active {
+  opacity: 1;
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-slide-index,
+.work-archive-section:not(.inner-section--graphite) .work-slide-label,
+.work-archive-section:not(.inner-section--graphite) .work-slide-concept,
+.work-archive-section:not(.inner-section--graphite) .work-slide-location {
+  color: var(--carbon-olive);
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-slide-index {
+  margin-bottom: 6px;
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-slide-index span {
+  color: rgba(41, 46, 43, 0.4);
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-slide-label {
+  color: var(--mineral-green);
+  margin-bottom: 4px;
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-name {
+  color: var(--mineral-green);
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-preview {
+  color: var(--mineral-green);
+  border-bottom-color: rgba(23, 37, 31, 0.28);
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-preview:hover {
+  color: var(--burnished-oxide);
+  border-bottom-color: rgba(166, 93, 67, 0.45);
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-slider-footer {
+  margin-top: 18px;
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-slider-progress {
+  background: rgba(23, 37, 31, 0.12);
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-slider-progress-fill {
+  background: var(--mineral-green);
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-slider-count {
+  color: var(--carbon-olive);
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-slider-link {
+  color: var(--mineral-green);
+  border-bottom-color: rgba(23, 37, 31, 0.28);
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-slider-link:hover {
+  color: var(--burnished-oxide);
+  border-bottom-color: rgba(166, 93, 67, 0.45);
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-slider-btn {
+  border-color: rgba(23, 37, 31, 0.22);
+  color: var(--mineral-green);
+  background: var(--warm-porcelain);
+}
+
+.work-archive-section:not(.inner-section--graphite) .work-slider-btn:hover,
+.work-archive-section:not(.inner-section--graphite) .work-slider-btn:focus-visible {
+  border-color: var(--mineral-green);
+  background: rgba(23, 37, 31, 0.06);
+  color: var(--mineral-green);
+}
+
+.work-slider-hint {
+  display: none;
+}
+
 .work-archive-niches {
   display: flex;
   flex-wrap: wrap;
@@ -2326,16 +2416,34 @@ body.has-custom-cursor .cursor-ring {
 }
 
 @media (max-width: 640px) {
+  .work-slider {
+    gap: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
   .work-slide {
-    flex-basis: 86vw;
+    flex-basis: 72vw;
+    gap: 12px;
+  }
+
+  .work-archive-slider .work-slider {
+    padding-inline-end: max(var(--section-x), calc(100% - 72vw + 16px));
+  }
+
+  .work-slide-meta {
+    gap: 10px 16px;
   }
 
   .work-slider-footer {
     grid-template-columns: 1fr auto;
     grid-template-areas:
+      "hint hint"
       "progress progress"
       "count link"
       "nav nav";
+    gap: 12px 16px;
+    margin-top: 16px;
   }
 
   .work-slider-progress {
@@ -2349,11 +2457,45 @@ body.has-custom-cursor .cursor-ring {
   .work-slider-nav {
     grid-area: nav;
     justify-content: flex-start;
+    display: flex;
   }
 
   .work-slider-link {
     grid-area: link;
     justify-self: end;
+  }
+
+  .work-slider-hint {
+    grid-area: hint;
+    display: block;
+    font-family: var(--font-mono), monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--carbon-olive);
+    margin: 0;
+  }
+
+  .work-archive-section:not(.inner-section--graphite) .work-slider-hint {
+    display: block;
+    color: var(--carbon-olive);
+  }
+
+  #work .work-slider-hint {
+    color: rgba(240, 237, 229, 0.62);
+  }
+
+  .inner-section--graphite .work-slider-hint {
+    display: block;
+    color: rgba(240, 237, 229, 0.62);
+  }
+
+  .work-archive-section .work-filter-note {
+    margin-bottom: 20px;
+  }
+
+  .work-archive-section .inner-section-head {
+    margin-bottom: 16px;
   }
 }
 
@@ -2368,7 +2510,7 @@ body.has-custom-cursor .cursor-ring {
   }
 }
 
-/* ââ Final CTA â full-width Burnished Oxide ââ */
+/* Ã¢ÂÂÃ¢ÂÂ Final CTA Ã¢ÂÂ full-width Burnished Oxide Ã¢ÂÂÃ¢ÂÂ */
 #cta {
   padding: clamp(96px, 14vw, 160px) var(--section-x);
   background: var(--burnished-oxide);
@@ -2924,7 +3066,7 @@ body::after {
   }
 }
 
-/* ââ Homepage hero â Mineral Green ââ */
+/* Ã¢ÂÂÃ¢ÂÂ Homepage hero Ã¢ÂÂ Mineral Green Ã¢ÂÂÃ¢ÂÂ */
 .home-hero {
   position: relative;
   z-index: 5;
@@ -3170,15 +3312,19 @@ body::after {
   }
 }
 
-/* ââ Inner pages ââ */
+/* —— Inner pages —— */
 .inner-main {
-  padding-top: 96px;
+  padding-top: 0;
   min-height: 60vh;
 }
 
 .inner-hero {
   position: relative;
-  padding: clamp(48px, 10vw, 120px) var(--section-x) clamp(40px, 8vw, 88px);
+  /* Nav clearance lives inside the hero so the background bleeds under the fixed nav. */
+  padding:
+    calc(env(safe-area-inset-top, 0px) + 112px)
+    var(--section-x)
+    clamp(40px, 8vw, 88px);
   overflow: hidden;
   isolation: isolate;
   background: var(--warm-porcelain);
@@ -3735,11 +3881,11 @@ body::after {
 
   .inner-hero--split {
     gap: 20px;
-    min-height: calc(100dvh - 84px);
-    max-height: calc(100dvh - 84px);
+    min-height: 100dvh;
+    max-height: 100dvh;
     box-sizing: border-box;
     overflow: hidden;
-    padding-top: 28px;
+    padding-top: calc(env(safe-area-inset-top, 0px) + 100px);
     padding-bottom: 28px;
   }
 
@@ -3767,10 +3913,13 @@ body::after {
 
 @media (max-width: 900px) {
   .inner-hero--cinema {
-    min-height: calc(100dvh - 84px);
-    max-height: calc(100dvh - 84px);
+    min-height: 100dvh;
+    max-height: 100dvh;
     box-sizing: border-box;
-    padding: 28px var(--section-x) 32px;
+    padding:
+      calc(env(safe-area-inset-top, 0px) + 100px)
+      var(--section-x)
+      32px;
     overflow: hidden;
   }
 
@@ -3799,12 +3948,11 @@ body::after {
 }
 
 @media (max-width: 640px) {
-  .inner-main {
-    padding-top: 84px;
-  }
-
   .inner-hero:not(.inner-hero--cinema):not(.inner-hero--split) {
-    padding: 28px var(--section-x) 32px;
+    padding:
+      calc(env(safe-area-inset-top, 0px) + 100px)
+      var(--section-x)
+      32px;
   }
 
   .inner-hero:not(.inner-hero--cinema):not(.inner-hero--split) .inner-h1 {
@@ -3826,11 +3974,6 @@ body::after {
   }
 }
 
-@media (min-width: 641px) and (max-width: 899px) {
-  .inner-main {
-    padding-top: 92px;
-  }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .text-link,

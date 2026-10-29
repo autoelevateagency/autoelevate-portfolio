@@ -71,8 +71,6 @@ const alts = {
     "Tandem Car Hub homepage hero — Winnipeg multi-service ceramic, PPF, tint, wraps, and detailing layout",
   "autoelevate-portfolio":
     "AutoElevate Portfolio homepage hero — agency portfolio brand presence and selected work layout",
-  "cwork-production":
-    "Cwork Production homepage hero — live-event production concept layout",
 };
 
 const ids = Object.keys(alts);

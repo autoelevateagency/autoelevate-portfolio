@@ -7,21 +7,18 @@ import {
   PortfolioSlider,
   type PortfolioSliderHandle,
 } from "@/components/portfolio/portfolio-slider";
-import { PortfolioCard } from "@/components/pages/portfolio-card";
 import { WorkNicheNav } from "@/components/pages/work-niche-nav";
-import type { PortfolioItem, PortfolioNiche } from "@/data/portfolio";
+import type { PortfolioNiche } from "@/data/portfolio";
 import { SITE_ROUTES } from "@/data/site-config";
 import type { PortfolioSlideItem } from "@/lib/portfolio-labels";
 
 type WorkArchiveProps = {
   projects: readonly PortfolioSlideItem[];
-  adjacent: readonly PortfolioItem[];
   heading: string;
 };
 
 export const WorkArchive = ({
   projects,
-  adjacent,
   heading,
 }: WorkArchiveProps): React.ReactElement => {
   const sliderRef = useRef<PortfolioSliderHandle>(null);
@@ -72,24 +69,6 @@ export const WorkArchive = ({
           </Link>
         </div>
       </section>
-
-      {adjacent.length > 0 ? (
-        <section className="inner-section inner-section--muted">
-          <div className="inner-section-head">
-            <p className="section-eyebrow">Adjacent</p>
-            <h2 className="inner-h2">Other concepts</h2>
-          </div>
-          <p className="work-filter-note">
-            Included for completeness from the concept archive; not automotive
-            studio niches.
-          </p>
-          <div className="portfolio-grid">
-            {adjacent.map((project) => (
-              <PortfolioCard key={project.id} project={project} />
-            ))}
-          </div>
-        </section>
-      ) : null}
     </>
   );
 };

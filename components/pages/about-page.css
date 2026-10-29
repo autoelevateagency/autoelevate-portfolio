@@ -7,7 +7,10 @@
   gap: clamp(32px, 5vw, 72px);
   align-items: end;
   min-height: clamp(520px, 78vh, 760px);
-  padding: clamp(48px, 8vw, 96px) var(--section-x) clamp(48px, 8vw, 88px);
+  padding:
+    calc(env(safe-area-inset-top, 0px) + 112px)
+    var(--section-x)
+    clamp(48px, 8vw, 88px);
   background: var(--mineral-green);
   color: var(--warm-porcelain);
   overflow: hidden;
@@ -422,12 +425,15 @@
     display: flex;
     flex-direction: column;
     grid-template-columns: none;
-    height: calc(100dvh - 84px);
-    max-height: calc(100dvh - 84px);
-    min-height: calc(100dvh - 84px);
+    height: 100dvh;
+    max-height: 100dvh;
+    min-height: 100dvh;
     box-sizing: border-box;
     gap: 14px;
-    padding: 20px var(--section-x) 20px;
+    padding:
+      calc(env(safe-area-inset-top, 0px) + 100px)
+      var(--section-x)
+      20px;
     overflow: hidden;
   }
 

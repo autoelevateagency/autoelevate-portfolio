@@ -5,10 +5,7 @@ import { PageCta } from "@/components/pages/page-cta";
 import { WorkArchive } from "@/components/pages/work-archive";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";
-import {
-  ADJACENT_PORTFOLIO,
-  AUTOMOTIVE_PORTFOLIO,
-} from "@/data/portfolio";
+import { AUTOMOTIVE_PORTFOLIO } from "@/data/portfolio";
 import { PAGE_SEO } from "@/data/page-seo";
 import { SITE_ROUTES } from "@/data/site-config";
 import { toPortfolioSlide } from "@/lib/portfolio-labels";
@@ -53,8 +50,7 @@ export default function WorkPage(): React.ReactElement {
 
       <WorkArchive
         projects={automotiveSlides}
-        adjacent={ADJACENT_PORTFOLIO}
-        heading={`${AUTOMOTIVE_PORTFOLIO.length} automotive concepts`}
+        heading="Automotive concepts"
       />
 
       <PageCta
