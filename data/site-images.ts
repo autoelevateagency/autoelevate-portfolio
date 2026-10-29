@@ -1,4 +1,15 @@
 const BASE = "/assets/images";
+const WORK = "/assets/work";
+
+/** Landscape hero capture size used for all concept screenshots. */
+export const CONCEPT_SCREENSHOT_SIZE = {
+  width: 1440,
+  height: 810,
+} as const;
+
+/** Local WebP hero capture path for a portfolio concept slug. */
+export const conceptScreenshotPath = (slug: string): string =>
+  `${WORK}/${slug}.webp`;
 
 export const SITE_IMAGES = {
   heroScenes: [
@@ -13,10 +24,11 @@ export const SITE_IMAGES = {
     `${BASE}/case-02.jpeg`,
     `${BASE}/case-033.jpeg`,
   ],
+  /** Featured home / why-section previews — unique concept heroes. */
   work: [
-    "/assets/work/prestige-auto-salon.png",
-    "/assets/work/mz-details.png",
-    "/assets/work/831-ricardiopng.png",
+    conceptScreenshotPath("prestige-auto-salon"),
+    conceptScreenshotPath("mz-extraordinary-details"),
+    conceptScreenshotPath("831-ricardo-detailing"),
   ],
   services: [
     `${BASE}/service-01.jpeg`,

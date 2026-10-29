@@ -1,6 +1,12 @@
 import { CONCEPT_DETAILS, type ConceptDetail } from "@/data/concept-details";
-import { SITE_IMAGES } from "@/data/site-images";
+import { conceptScreenshotPath } from "@/data/site-images";
 import { SITE_ROUTES, workConceptPath } from "@/data/site-config";
+
+const shot = (slug: string, alt: string) =>
+  ({
+    screenshot: conceptScreenshotPath(slug),
+    screenshotAlt: alt,
+  }) as const;
 
 export type PortfolioNiche =
   | "detailing"
@@ -37,11 +43,12 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     previewUrl: "https://prestige-auto-salon.vercel.app/",
     domain: "prestige-auto-salon.vercel.app",
     niches: ["ppf", "detailing", "multi"],
-    screenshot: SITE_IMAGES.work[0],
-    screenshotAlt:
-      "Prestige Auto Salon website hero with luxury vehicle and precision protection headline",
     featuredOnHome: true,
     label: "Website concept",
+    ...shot(
+      "prestige-auto-salon",
+      "Prestige Auto Salon homepage hero — luxury protection studio layout with vehicle photography and precision protection headline",
+    ),
   },
   {
     id: "mz-extraordinary-details",
@@ -52,11 +59,12 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     domain: "mz-extraordinary-details.vercel.app",
     niches: ["detailing"],
     location: "DFW",
-    screenshot: SITE_IMAGES.work[1],
-    screenshotAlt:
-      "MZ Extraordinary Details website hero with luxury detailing studio photography",
     featuredOnHome: true,
     label: "Website concept",
+    ...shot(
+      "mz-extraordinary-details",
+      "MZ Extraordinary Details homepage hero — DFW luxury detailing studio photography and booking-focused layout",
+    ),
   },
   {
     id: "831-ricardo-detailing",
@@ -66,11 +74,12 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     previewUrl: "https://831-ricardo-detailing.vercel.app/",
     domain: "831-ricardo-detailing.vercel.app",
     niches: ["detailing"],
-    screenshot: SITE_IMAGES.work[2],
-    screenshotAlt:
-      "831 Ricardo Detailing website hero with black-and-white luxury automotive photography",
     featuredOnHome: true,
     label: "Website concept",
+    ...shot(
+      "831-ricardo-detailing",
+      "831 Ricardo Detailing homepage hero — bold black-and-white automotive detailing typography and photography",
+    ),
   },
   {
     id: "duarte-mobile-detailing",
@@ -81,6 +90,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     domain: "duarte-mobile-detailing.vercel.app",
     niches: ["detailing"],
     label: "Website concept",
+    ...shot("duarte-mobile-detailing",
+      "Duarte Mobile Detailing homepage hero — mobile detailing packages and enquiry-led layout",
+    ),
   },
   {
     id: "refine-auto-detailing",
@@ -92,6 +104,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing"],
     location: "San Antonio",
     label: "Website concept",
+    ...shot("refine-auto-detailing",
+      "Refine Auto Detailing homepage hero — San Antonio detailing service storytelling and booking layout",
+    ),
   },
   {
     id: "safeguard-window-tinting",
@@ -102,6 +117,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     domain: "safeguard-window-tinting.vercel.app",
     niches: ["tint"],
     label: "Website concept",
+    ...shot("safeguard-window-tinting",
+      "Safeguard Window Tinting homepage hero — film-first tint studio layout with quote-led CTAs",
+    ),
   },
   {
     id: "all-star-auto-detailing",
@@ -113,6 +131,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing"],
     location: "Houston",
     label: "Website concept",
+    ...shot("all-star-auto-detailing",
+      "All-Star Auto Detailing homepage hero — Houston detailing brand presence and service hierarchy",
+    ),
   },
   {
     id: "trujillos-premium-detailing",
@@ -124,6 +145,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing"],
     location: "Milwaukee",
     label: "Website concept",
+    ...shot("trujillos-premium-detailing",
+      "Trujillo's Premium Detailing homepage hero — Milwaukee mobile detailing premium positioning",
+    ),
   },
   {
     id: "degreef-car-detailing",
@@ -134,6 +158,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     domain: "degreef-car-detailing.vercel.app",
     niches: ["detailing"],
     label: "Website concept",
+    ...shot("degreef-car-detailing",
+      "Degreef Car Detailing homepage hero — sharp mobile detailing visual system and service paths",
+    ),
   },
   {
     id: "carotic",
@@ -145,6 +172,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["wraps", "tint", "multi"],
     location: "Houston",
     label: "Website concept",
+    ...shot("carotic",
+      "Carotic homepage hero — Houston wraps and custom-build shop archive layout",
+    ),
   },
   {
     id: "yaad-boyz-detail",
@@ -156,6 +186,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing"],
     location: "Chesapeake",
     label: "Website concept",
+    ...shot("yaad-boyz-detail",
+      "Yaad Boyz Detail homepage hero — Chesapeake luxury detailing brand story and packages",
+    ),
   },
   {
     id: "gold-shine",
@@ -167,6 +200,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["ppf", "detailing", "tint", "multi"],
     location: "Dubai",
     label: "Website concept",
+    ...shot("gold-shine",
+      "Gold Shine homepage hero — Dubai multi-service protection studio layout for PPF, ceramic, and tint",
+    ),
   },
   {
     id: "empire-tint-lab",
@@ -178,6 +214,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["tint", "ppf", "wraps", "detailing", "multi"],
     location: "Ceres, CA",
     label: "Website concept",
+    ...shot("empire-tint-lab",
+      "Empire Tint Lab homepage hero — Ceres multi-service tint, PPF, and wraps film-first layout",
+    ),
   },
   {
     id: "luxe-auto-detailing",
@@ -188,6 +227,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     domain: "luxe-auto-detailing.vercel.app",
     niches: ["detailing"],
     label: "Website concept",
+    ...shot("luxe-auto-detailing",
+      "Luxe Auto Detailing homepage hero — interior and exterior detailing with mobile and drop-off framing",
+    ),
   },
   {
     id: "pcs-auto-detailing",
@@ -198,6 +240,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     domain: "pcs-auto-detailing.vercel.app",
     niches: ["detailing"],
     label: "Website concept",
+    ...shot("pcs-auto-detailing",
+      "PCS Auto Detailing homepage hero — precision detailing studio with luxury interior photography",
+    ),
   },
   {
     id: "yb-detailing",
@@ -208,6 +253,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     domain: "yb-detailing.vercel.app",
     niches: ["detailing"],
     label: "Website concept",
+    ...shot("yb-detailing",
+      "YB Detailing homepage hero — clean precision detailing service menu layout",
+    ),
   },
   {
     id: "maldos-mobile-detailing",
@@ -219,6 +267,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing"],
     location: "Lake County, FL",
     label: "Website concept",
+    ...shot("maldos-mobile-detailing",
+      "Maldos Mobile Detailing homepage hero — Lake County FL mobile detailing local service layout",
+    ),
   },
   {
     id: "schorr-shine-mobile-detailing",
@@ -229,6 +280,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     domain: "schorr-shine-mobile-detailing.vercel.app",
     niches: ["detailing"],
     label: "Website concept",
+    ...shot("schorr-shine-mobile-detailing",
+      "Schorr Shine Mobile Detailing homepage hero — premium mobile detailing conversion-ready layout",
+    ),
   },
   {
     id: "detail-zone",
@@ -240,6 +294,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing"],
     location: "Hertfordshire",
     label: "Website concept",
+    ...shot("detail-zone",
+      "Detail Zone homepage hero — Hertfordshire mobile detailing premium UK studio layout",
+    ),
   },
   {
     id: "luciano-auto-boutique",
@@ -251,6 +308,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing"],
     location: "Las Vegas",
     label: "Website concept",
+    ...shot("luciano-auto-boutique",
+      "Luciano Auto Boutique homepage hero — Las Vegas paint correction and ceramic boutique layout",
+    ),
   },
   {
     id: "nbg-detailing",
@@ -262,6 +322,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing"],
     location: "DFW",
     label: "Website concept",
+    ...shot("nbg-detailing",
+      "NBG Detailing homepage hero — DFW mobile detailing quality-led enquiry layout",
+    ),
   },
   {
     id: "garcia-epic-detailing",
@@ -273,6 +336,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing"],
     location: "Miami-Dade & Broward",
     label: "Website concept",
+    ...shot("garcia-epic-detailing",
+      "Garcia Epic Detailing homepage hero — Miami-Dade and Broward mobile detailing regional layout",
+    ),
   },
   {
     id: "refresh-detailing",
@@ -284,6 +350,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing"],
     location: "Liverpool & Sydney",
     label: "Website concept",
+    ...shot("refresh-detailing",
+      "Refresh Detailing homepage hero — Liverpool and Sydney mobile detailing dual-market layout",
+    ),
   },
   {
     id: "hogans-auto-detailing",
@@ -295,6 +364,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing"],
     location: "Hauser, Idaho",
     label: "Website concept",
+    ...shot("hogans-auto-detailing",
+      "Hogan's Auto Detailing homepage hero — North Idaho mobile detailing with luxury vehicle collage",
+    ),
   },
   {
     id: "the-detailing-studio",
@@ -306,6 +378,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing"],
     location: "Greater Toronto Area",
     label: "Website concept",
+    ...shot("the-detailing-studio",
+      "The Detailing Studio homepage hero — Greater Toronto Area mobile detailing precision layout",
+    ),
   },
   {
     id: "falkirk-car-care",
@@ -317,6 +392,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing"],
     location: "Falkirk, Scotland",
     label: "Website concept",
+    ...shot("falkirk-car-care",
+      "Falkirk Car Care homepage hero — Scotland detailing studio with ceramic and correction messaging",
+    ),
   },
   {
     id: "jrs-detailing",
@@ -328,6 +406,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing"],
     location: "Leesburg, VA",
     label: "Website concept",
+    ...shot("jrs-detailing",
+      "JRS Detailing homepage hero — Leesburg VA student-owned mobile detailing package layout",
+    ),
   },
   {
     id: "detailed-by-chery",
@@ -339,6 +420,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing"],
     location: "Port Saint Lucie, Florida",
     label: "Website concept",
+    ...shot("detailed-by-chery",
+      "Detailed by Chery homepage hero — Port Saint Lucie interior and exterior detailing studio layout",
+    ),
   },
   {
     id: "tandem-car-hub",
@@ -350,6 +434,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["detailing", "ppf", "tint", "wraps", "multi"],
     location: "Winnipeg",
     label: "Website concept",
+    ...shot("tandem-car-hub",
+      "Tandem Car Hub homepage hero — Winnipeg multi-service ceramic, PPF, tint, wraps, and detailing layout",
+    ),
   },
   {
     id: "cwork-production",
@@ -360,6 +447,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     domain: "cwork-production.vercel.app",
     niches: ["other"],
     label: "Website concept",
+    ...shot("cwork-production",
+      "Cwork Production homepage hero — live-event production concept layout",
+    ),
   },
   {
     id: "autoelevate-portfolio",
@@ -371,6 +461,9 @@ export const PORTFOLIO: readonly PortfolioItem[] = [
     niches: ["other"],
     isAgencySite: true,
     label: "Live demo",
+    ...shot("autoelevate-portfolio",
+      "AutoElevate Portfolio homepage hero — agency portfolio brand presence and selected work layout",
+    ),
   },
 ] as const;
 
@@ -418,9 +511,14 @@ export const PORTFOLIO_INVENTORY_GAPS = [
   {
     name: "Wazny Works",
     intendedSlug: "wazny-works",
-    missing: ["previewUrl", "detailPage", "serviceSliders"] as const,
+    missing: [
+      "previewUrl",
+      "detailPage",
+      "serviceSliders",
+      "screenshot",
+    ] as const,
     notes:
-      "No AutoElevate Vercel demo URL recovered after exhaustive probe. Commercial site waznyworks.com verifies Bartlett, IL and services (ceramic coating, window tinting, paint correction, detailing) — not used as a substitute demo URL.",
+      "No AutoElevate Vercel demo URL recovered after exhaustive probe. Commercial site waznyworks.com verifies Bartlett, IL and services (ceramic coating, window tinting, paint correction, detailing) — not used as a substitute demo URL. Hero screenshot omitted until a recoverable demo exists.",
   },
 ] as const;
 

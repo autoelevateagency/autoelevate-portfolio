@@ -48,11 +48,11 @@ fs.mkdirSync(outDir, { recursive: true });
 
 const results = [];
 
-const browser = await chromium.launch({ headless: true });
+// Headed Chromium loads CSS background-image heroes more reliably than headless.
+const browser = await chromium.launch({ headless: false });
 const context = await browser.newContext({
   viewport: { width: 1440, height: 810 },
   deviceScaleFactor: 1,
-  colorScheme: "dark",
 });
 
 const page = await context.newPage();
@@ -71,26 +71,12 @@ for (const concept of CONCEPTS) {
       continue;
     }
 
-    // Settle hero imagery / fonts without hanging on long-polling.
-    await page.waitForLoadState("networkidle", { timeout: 45000 }).catch(() => {});
+    await page.waitForTimeout(4500);
     await page.evaluate(async () => {
       window.scrollTo(0, 0);
       if (document.fonts?.ready) await document.fonts.ready;
-      const imgs = [...document.images];
-      await Promise.all(
-        imgs.map(
-          (img) =>
-            img.complete
-              ? Promise.resolve()
-              : new Promise((resolve) => {
-                  img.addEventListener("load", resolve, { once: true });
-                  img.addEventListener("error", resolve, { once: true });
-                }),
-        ),
-      );
     });
-    await page.waitForTimeout(2500);
-    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(500);
 
     await page.screenshot({
       path: outPath,
@@ -100,7 +86,21 @@ for (const concept of CONCEPTS) {
       animations: "disabled",
     });
 
-    const bytes = fs.statSync(outPath).size;
+    let bytes = fs.statSync(outPath).size;
+    // Retry once for CSS-background heroes that settle late (e.g. Hogan's).
+    if (bytes < 15000) {
+      await page.waitForTimeout(8000);
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.screenshot({
+        path: outPath,
+        type: "webp",
+        quality: 82,
+        fullPage: false,
+        animations: "disabled",
+      });
+      bytes = fs.statSync(outPath).size;
+    }
+
     results.push({ id: concept.id, ok: true, bytes, path: outPath });
     console.log(`OK   ${concept.id} (${Math.round(bytes / 1024)} KB)`);
   } catch (err) {
