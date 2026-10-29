@@ -12,15 +12,29 @@ export const absoluteUrl = (path: string): string => {
   return `${SITE_CONFIG.url}${normalizedPath}`;
 };
 
+/** Normalize page titles so the root layout template cannot double-append the brand. */
+export const absolutePageTitle = (title: string): string => {
+  const trimmed = title.trim();
+  if (/AutoElevate|Auto Elevate/i.test(trimmed)) {
+    return trimmed
+      .replace(/\|\s*AutoElevate\s*$/i, `| ${SITE_CONFIG.displayName}`)
+      .trim();
+  }
+  return `${trimmed} | ${SITE_CONFIG.displayName}`;
+};
+
 export const buildPageMetadata = (
   page: PageSeo,
   options?: { ogImage?: string },
 ): Metadata => {
   const url = absoluteUrl(page.path);
   const ogImage = options?.ogImage ?? SITE_CONFIG.ogImage;
+  const title = absolutePageTitle(page.title);
 
   return {
-    title: page.title,
+    title: {
+      absolute: title,
+    },
     description: page.description,
     alternates: {
       canonical: page.path,
@@ -30,7 +44,7 @@ export const buildPageMetadata = (
       locale: SITE_CONFIG.locale,
       url,
       siteName: SITE_CONFIG.displayName,
-      title: page.title,
+      title,
       description: page.description,
       images: [
         {
@@ -43,7 +57,7 @@ export const buildPageMetadata = (
     },
     twitter: {
       card: "summary_large_image",
-      title: page.title,
+      title,
       description: page.description,
       images: [ogImage],
     },

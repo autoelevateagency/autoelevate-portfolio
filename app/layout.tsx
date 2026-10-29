@@ -38,9 +38,6 @@ export const metadata: Metadata = {
   category: "Digital Marketing",
   alternates: {
     canonical: "/",
-    languages: {
-      "en-US": "/",
-    },
   },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],

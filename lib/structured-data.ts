@@ -41,7 +41,6 @@ export const getLocalBusinessSchema = (): Record<string, unknown> => ({
   url: SITE_CONFIG.url,
   telephone: SITE_CONFIG.phone,
   email: SITE_CONFIG.email,
-  priceRange: "$$$$",
   description: SITE_CONFIG.defaultDescription,
   address: {
     "@type": "PostalAddress",
@@ -114,7 +113,7 @@ export const getServiceSchema = (): Record<string, unknown> => ({
   offers: {
     "@type": "Offer",
     availability: "https://schema.org/InStock",
-    url: absoluteUrl(SITE_ROUTES.services),
+    url: absoluteUrl(SITE_ROUTES.automotiveWebsiteDesign),
   },
 });
 
@@ -166,7 +165,6 @@ export const getStructuredDataGraph = (): Record<string, unknown> => ({
     getServiceSchema(),
     getBreadcrumbSchema([
       { name: "Home", path: SITE_ROUTES.home },
-      { name: "Services", path: SITE_ROUTES.services },
       { name: "Work", path: SITE_ROUTES.work },
       { name: "About", path: SITE_ROUTES.about },
     ]),

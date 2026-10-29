@@ -28,7 +28,7 @@ export const generateMetadata = async ({
 
   const niche = primaryNicheLabel(concept);
   const locationBit = concept.location ? ` (${concept.location})` : "";
-  const title = `${concept.name}${locationBit} Website Concept | AutoElevate`;
+  const title = `${concept.name}${locationBit} Website Concept`;
   const description = concept.detail.metaDescription;
   const ogImage = concept.screenshot ?? SITE_CONFIG.ogImage;
 
