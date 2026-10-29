@@ -1,13 +1,5 @@
 import { SITE_CONFIG, SITE_ROUTES } from "@/data/site-config";
-
-const absoluteUrl = (path: string): string => {
-  if (!path || path === "/") {
-    return SITE_CONFIG.url;
-  }
-
-  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-  return `${SITE_CONFIG.url}${normalizedPath}`;
-};
+import { absoluteUrl } from "@/lib/seo";
 
 export const getOrganizationSchema = (): Record<string, unknown> => ({
   "@context": "https://schema.org",
@@ -80,6 +72,8 @@ export const getLocalBusinessSchema = (): Record<string, unknown> => ({
     "Ceramic coating marketing",
     "PPF studio branding",
     "Window tinting lead generation",
+    "Automotive branding",
+    "Meta advertising for automotive studios",
   ],
 });
 
@@ -110,10 +104,11 @@ export const getServiceSchema = (): Record<string, unknown> => ({
     name: area,
   })),
   serviceType: [
-    "Automotive websites for detailing, PPF, ceramic coating, window tint and wraps",
-    "Booking and lead systems for automotive businesses",
-    "Google and local search presence for automotive studios",
-    "Social media presence for automotive brands",
+    "Automotive website design for detailing, PPF, ceramic coating, window tint and wraps",
+    "Automotive branding and visual identity",
+    "Automotive SEO and local search optimization",
+    "Google Business Profile optimization for automotive studios",
+    "Social media management for automotive brands",
     "Meta advertising for local automotive customer acquisition",
   ],
   offers: {
@@ -123,35 +118,43 @@ export const getServiceSchema = (): Record<string, unknown> => ({
   },
 });
 
-export const getBreadcrumbSchema = (): Record<string, unknown> => ({
+export type BreadcrumbItem = {
+  name: string;
+  path: string;
+};
+
+export const getBreadcrumbSchema = (
+  items: BreadcrumbItem[],
+): Record<string, unknown> => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: SITE_CONFIG.url,
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Services",
-      item: absoluteUrl(SITE_ROUTES.services),
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: "Case Studies",
-      item: absoluteUrl(SITE_ROUTES.work),
-    },
-    {
-      "@type": "ListItem",
-      position: 4,
-      name: "About",
-      item: absoluteUrl(SITE_ROUTES.about),
-    },
-  ],
+  itemListElement: items.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: item.name,
+    item: absoluteUrl(item.path),
+  })),
+});
+
+export const getPageServiceSchema = (input: {
+  name: string;
+  description: string;
+  path: string;
+  serviceType: string | string[];
+}): Record<string, unknown> => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: input.name,
+  description: input.description,
+  provider: {
+    "@id": `${SITE_CONFIG.url}/#organization`,
+  },
+  url: absoluteUrl(input.path),
+  areaServed: SITE_CONFIG.serviceAreas.map((area) => ({
+    "@type": "Place",
+    name: area,
+  })),
+  serviceType: input.serviceType,
 });
 
 export const getStructuredDataGraph = (): Record<string, unknown> => ({
@@ -161,6 +164,11 @@ export const getStructuredDataGraph = (): Record<string, unknown> => ({
     getLocalBusinessSchema(),
     getWebsiteSchema(),
     getServiceSchema(),
-    getBreadcrumbSchema(),
+    getBreadcrumbSchema([
+      { name: "Home", path: SITE_ROUTES.home },
+      { name: "Services", path: SITE_ROUTES.services },
+      { name: "Work", path: SITE_ROUTES.work },
+      { name: "About", path: SITE_ROUTES.about },
+    ]),
   ],
 });

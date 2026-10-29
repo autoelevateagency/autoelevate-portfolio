@@ -2,17 +2,16 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 type PremiumMotionOptions = {
-  scrollSpacer: HTMLElement | null;
+  scrollSpacer?: HTMLElement | null;
   onHeroProgress?: (progress: number) => void;
 };
 
 const prefersReducedMotion = (): boolean =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-export const initPremiumMotion = ({
-  scrollSpacer,
-  onHeroProgress,
-}: PremiumMotionOptions): (() => void) => {
+export const initPremiumMotion = (
+  _options: PremiumMotionOptions = {},
+): (() => void) => {
   if (prefersReducedMotion()) {
     document.querySelectorAll(".reveal").forEach((el) => el.classList.add("visible"));
     document
@@ -30,7 +29,6 @@ export const initPremiumMotion = ({
 
   const cleanups: Array<() => void> = [];
   const progressBar = document.querySelector<HTMLElement>(".scroll-progress-bar");
-  const heroRailFill = document.querySelector<HTMLElement>(".hero-scroll-rail-fill");
   const nav = document.querySelector("nav");
 
   const setScrollProgress = (progress: number): void => {
@@ -52,28 +50,6 @@ export const initPremiumMotion = ({
   window.addEventListener("scroll", onPageScroll, { passive: true });
   onPageScroll();
   cleanups.push(() => window.removeEventListener("scroll", onPageScroll));
-
-  if (scrollSpacer) {
-    const heroTrigger = ScrollTrigger.create({
-      trigger: scrollSpacer,
-      start: "top top",
-      end: "bottom bottom",
-      onUpdate: (self) => {
-        const progress = self.progress;
-        onHeroProgress?.(progress);
-        if (heroRailFill) {
-          heroRailFill.style.transform = `scaleY(${progress})`;
-        }
-
-        const activeCanvas = document.querySelector<HTMLElement>(".scene-canvas.active");
-        const bgImage = activeCanvas?.querySelector<HTMLElement>(".scene-bg-image, .scene-bg-video");
-        if (bgImage) {
-          gsap.set(bgImage, { y: progress * 42 - 21 });
-        }
-      },
-    });
-    cleanups.push(() => heroTrigger.kill());
-  }
 
   gsap.utils.toArray<HTMLElement>(".reveal").forEach((el) => {
     const trigger = ScrollTrigger.create({
@@ -201,60 +177,3 @@ export const initPremiumMotion = ({
   };
 };
 
-export const animateSceneText = (sceneIndex: number): void => {
-  if (prefersReducedMotion()) return;
-
-  const activeText = document.querySelector<HTMLElement>(`#text-${sceneIndex}`);
-  if (!activeText) return;
-
-  const pieces = activeText.querySelectorAll<HTMLElement>(
-    ".scene-eyebrow, .scene-headline, .scene-sub",
-  );
-
-  gsap.fromTo(
-    pieces,
-    { y: 48, opacity: 0, filter: "blur(12px)" },
-    {
-      y: 0,
-      opacity: 1,
-      filter: "blur(0px)",
-      duration: 1.05,
-      stagger: 0.14,
-      ease: "power3.out",
-      overwrite: true,
-    },
-  );
-};
-
-export const animateLoaderExit = (onComplete: () => void): void => {
-  const loader = document.getElementById("loader");
-  if (!loader || prefersReducedMotion()) {
-    onComplete();
-    return;
-  }
-
-  gsap
-    .timeline({
-      onComplete,
-    })
-    .to(".loader-logo", { scale: 1.08, duration: 0.4, ease: "power2.out" })
-    .to(
-      loader,
-      {
-        opacity: 0,
-        duration: 0.9,
-        ease: "power2.inOut",
-      },
-      0.2,
-    )
-    .to(
-      "#cinematic-hero",
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power3.out",
-      },
-      0.35,
-    );
-};

@@ -1,5 +1,8 @@
+import Link from "next/link";
+
 import { SiteImage } from "@/components/autoelevate/site-image";
 import { SITE_IMAGES } from "@/data/site-images";
+import { SITE_ROUTES } from "@/data/site-config";
 
 export const WhyAutoElevateSection = (): React.ReactElement => (
   <section id="about" className="why-ae" aria-labelledby="why-ae-heading">
@@ -68,7 +71,13 @@ export const WhyAutoElevateSection = (): React.ReactElement => (
 
       <div className="why-ae-base">
         <p className="why-ae-industries">
-          Detailing · PPF · Ceramic · Tint · Wraps
+          <Link href={SITE_ROUTES.carDetailingWebsiteDesign}>Detailing</Link>
+          {" · "}
+          <Link href={SITE_ROUTES.ppfWebsiteDesign}>PPF</Link>
+          {" · Ceramic · "}
+          <Link href={SITE_ROUTES.windowTintWebsiteDesign}>Tint</Link>
+          {" · "}
+          <Link href={SITE_ROUTES.carWrapWebsiteDesign}>Wraps</Link>
         </p>
         <div className="why-ae-rule" aria-hidden="true" />
         <p className="why-ae-close">Custom by Design / Automotive by Focus</p>

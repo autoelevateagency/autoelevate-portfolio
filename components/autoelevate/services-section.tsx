@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 import { ServiceVisual } from "@/components/autoelevate/service-visuals";
 import { SERVICES } from "@/data/services";
@@ -129,6 +130,12 @@ export const ServicesSection = (): React.ReactElement => {
               ))}
             </h3>
             <p className="services-stage-desc">{activeService.description}</p>
+            {activeService.href ? (
+              <Link className="services-stage-link" href={activeService.href}>
+                Explore this service
+                <span aria-hidden="true">→</span>
+              </Link>
+            ) : null}
           </div>
 
           <div className="services-visual" aria-hidden="true">
@@ -159,16 +166,22 @@ export const ServicesSection = (): React.ReactElement => {
         <ol className="services-chapters">
           {SERVICES.map((service) => (
             <li className="services-chapter reveal" key={service.id}>
-              <p className="services-chapter-num">{service.num}</p>
-              <h3 className="services-chapter-title">
-                {service.titleLines.map((line) => (
-                  <span key={line}>{line}</span>
-                ))}
-              </h3>
+              <div className="services-chapter-head">
+                <p className="services-chapter-num" aria-hidden="true">
+                  {service.num}
+                </p>
+                <h3 className="services-chapter-title">{service.name}</h3>
+              </div>
               <div className="services-chapter-visual" aria-hidden="true">
                 <ServiceVisual id={service.id} />
               </div>
               <p className="services-chapter-desc">{service.description}</p>
+              {service.href ? (
+                <Link className="services-stage-link" href={service.href}>
+                  Explore this service
+                  <span aria-hidden="true">→</span>
+                </Link>
+              ) : null}
             </li>
           ))}
         </ol>

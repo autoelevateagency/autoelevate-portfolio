@@ -1,5 +1,5 @@
 const rawSiteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://goautoelevate.com";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.goautoelevate.com";
 
 const siteUrl = rawSiteUrl.replace(/\/+$/, "");
 
@@ -66,9 +66,23 @@ export const SITE_CONFIG = {
 
 export const SITE_ROUTES = {
   home: "/",
+  work: "/work",
+  automotiveWebsiteDesign: "/automotive-website-design",
+  carDetailingWebsiteDesign: "/car-detailing-website-design",
+  ppfWebsiteDesign: "/ppf-website-design",
+  windowTintWebsiteDesign: "/window-tint-website-design",
+  carWrapWebsiteDesign: "/car-wrap-website-design",
+  automotiveSeo: "/automotive-seo",
+  automotiveDigitalMarketing: "/automotive-digital-marketing",
+  automotiveBranding: "/automotive-branding",
   services: "/#services",
-  work: "/#work",
+  homeWork: "/#work",
   testimonials: "/#testimonials",
-  about: "/#about",
+  about: "/about",
+  homeAbout: "/#about",
   cta: "/#cta",
 } as const;
+
+export const workConceptPath = (slug: string): string => `/work/${slug}`;
+
+export type SiteRouteKey = keyof typeof SITE_ROUTES;

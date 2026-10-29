@@ -24,10 +24,15 @@ export const SITE_IMAGES = {
     `${BASE}/service-03.jpeg`,
     `${BASE}/service-04.jpeg`,
   ],
-  positioning: `${BASE}/Agency%20Positioning.jpeg`,
+  positioning: `${BASE}/Agency Positioning.jpeg`,
   cta: `${BASE}/contact.jpeg`,
   devScene: `${BASE}/development.jpeg`,
   resultsScene: `${BASE}/results.jpeg`,
+  aboutHero: `${BASE}/Black_Porsche_on_obsidian_floor_202606071731.jpeg`,
+  founders: {
+    taha: "/assets/about/taha.png",
+    ashadu: "/assets/about/ashadu.png",
+  },
 } as const;
 
 export type SiteImagePath = (typeof SITE_IMAGES)[keyof typeof SITE_IMAGES] extends readonly string[]

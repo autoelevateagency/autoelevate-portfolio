@@ -1,0 +1,477 @@
+/* —— About page — editorial automotive studio —— */
+
+.about-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: end;
+  min-height: clamp(520px, 78vh, 760px);
+  padding: clamp(48px, 8vw, 96px) var(--section-x) clamp(48px, 8vw, 88px);
+  background: var(--mineral-green);
+  color: var(--warm-porcelain);
+  overflow: hidden;
+}
+
+.about-hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 34rem;
+  padding-bottom: clamp(8px, 2vw, 24px);
+}
+
+.about-hero .breadcrumbs-list {
+  color: rgba(240, 237, 229, 0.55);
+}
+
+.about-hero .breadcrumbs-item a {
+  color: rgba(240, 237, 229, 0.7);
+}
+
+.about-hero .breadcrumbs-item a:hover,
+.about-hero .breadcrumbs-item a:focus-visible {
+  color: var(--muted-champagne);
+  outline: none;
+}
+
+.about-hero .breadcrumbs-item:not(:last-child)::after {
+  color: rgba(213, 195, 161, 0.35);
+}
+
+.about-hero-kicker {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted-champagne);
+  margin-bottom: 22px;
+}
+
+.about-hero-title {
+  font-family: var(--font-display), serif;
+  font-weight: 300;
+  font-size: clamp(40px, 6.4vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--warm-porcelain);
+  margin: 0 0 24px;
+  max-width: 11ch;
+}
+
+.about-hero-title em {
+  font-style: italic;
+  color: var(--muted-champagne);
+}
+
+.about-hero-lead {
+  font-size: clamp(15px, 1.4vw, 17px);
+  line-height: 1.75;
+  color: rgba(240, 237, 229, 0.78);
+  max-width: 38ch;
+  margin: 0 0 28px;
+}
+
+.about-hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.about-hero-links a {
+  color: rgba(240, 237, 229, 0.62);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition:
+    color 0.25s var(--ease-premium),
+    border-color 0.25s var(--ease-premium);
+}
+
+.about-hero-links a:hover,
+.about-hero-links a:focus-visible {
+  color: var(--muted-champagne);
+  border-bottom-color: rgba(213, 195, 161, 0.45);
+  outline: none;
+}
+
+.about-hero-media {
+  position: relative;
+  z-index: 1;
+  min-height: clamp(280px, 48vh, 560px);
+  border: 1px solid rgba(213, 195, 161, 0.18);
+  overflow: hidden;
+}
+
+.about-hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 48%,
+    rgba(23, 37, 31, 0.35) 100%
+  );
+  pointer-events: none;
+}
+
+.about-hero-caption {
+  margin-top: 12px;
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(213, 195, 161, 0.65);
+  text-align: right;
+}
+
+/* What we do — Warm Porcelain */
+.about-do {
+  padding: clamp(72px, 12vw, 132px) var(--section-x);
+  background: var(--warm-porcelain);
+  color: var(--mineral-green);
+}
+
+.about-do-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: end;
+  margin-bottom: clamp(40px, 7vw, 72px);
+  padding-bottom: clamp(28px, 4vw, 40px);
+  border-bottom: 1px solid rgba(23, 37, 31, 0.14);
+}
+
+.about-do-eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--carbon-olive);
+  margin-bottom: 16px;
+}
+
+.about-do-title {
+  font-family: var(--font-display), serif;
+  font-weight: 300;
+  font-size: clamp(32px, 4.4vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--mineral-green);
+  margin: 0;
+  max-width: 12ch;
+}
+
+.about-do-title em {
+  font-style: italic;
+  color: var(--burnished-oxide);
+}
+
+.about-do-lead {
+  font-size: clamp(15px, 1.4vw, 17px);
+  line-height: 1.75;
+  color: var(--carbon-olive);
+  max-width: 42ch;
+  margin: 0;
+}
+
+.about-do-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.about-do-item {
+  display: grid;
+  grid-template-columns: 3.2rem minmax(0, 1fr) auto;
+  gap: 16px 24px;
+  align-items: baseline;
+  padding: 22px 0;
+  border-top: 1px solid rgba(23, 37, 31, 0.12);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.35s var(--ease-premium);
+}
+
+.about-do-item:last-child {
+  border-bottom: 1px solid rgba(23, 37, 31, 0.12);
+}
+
+.about-do-item:hover,
+.about-do-item:focus-visible {
+  transform: translateX(6px);
+  outline: none;
+}
+
+.about-do-num {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: rgba(41, 46, 43, 0.55);
+}
+
+.about-do-item-title {
+  display: block;
+  font-family: var(--font-display), serif;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--mineral-green);
+  margin: 0 0 8px;
+}
+
+.about-do-item-body {
+  display: block;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--carbon-olive);
+  max-width: 48ch;
+  margin: 0;
+}
+
+.about-do-arrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--burnished-oxide);
+  align-self: center;
+}
+
+/* Founders — Carbon Olive */
+.about-founders {
+  padding: clamp(72px, 12vw, 132px) var(--section-x);
+  background: var(--carbon-olive);
+  color: var(--warm-porcelain);
+}
+
+.about-founders-head {
+  max-width: 40rem;
+  margin-bottom: clamp(40px, 7vw, 72px);
+}
+
+.about-founders-eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted-champagne);
+  margin-bottom: 18px;
+}
+
+.about-founders-title {
+  font-family: var(--font-display), serif;
+  font-weight: 300;
+  font-size: clamp(32px, 4.6vw, 56px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--warm-porcelain);
+  margin: 0 0 16px;
+}
+
+.about-founders-title em {
+  font-style: italic;
+  color: var(--muted-champagne);
+}
+
+.about-founders-note {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(240, 237, 229, 0.72);
+  max-width: 42ch;
+  margin: 0;
+}
+
+.about-founders-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+
+.about-founder {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.about-founder-portrait {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid rgba(213, 195, 161, 0.2);
+  background: var(--mineral-green);
+}
+
+.about-founder-portrait img {
+  object-position: center 18%;
+}
+
+.about-founder-meta {
+  display: grid;
+  gap: 8px;
+}
+
+.about-founder-role {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--muted-champagne);
+  margin: 0;
+}
+
+.about-founder-name {
+  font-family: var(--font-display), serif;
+  font-weight: 300;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--warm-porcelain);
+  margin: 0;
+}
+
+.about-founder--lead .about-founder-role {
+  color: var(--muted-champagne);
+}
+
+.about-founder--lead .about-founder-name {
+  color: var(--warm-porcelain);
+}
+
+/* Closing CTA — Burnished Oxide */
+.about-cta {
+  padding: clamp(88px, 13vw, 140px) var(--section-x);
+  background: var(--burnished-oxide);
+  color: var(--warm-porcelain);
+  text-align: center;
+}
+
+.about-cta-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.about-cta-eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(240, 237, 229, 0.82);
+  margin-bottom: 20px;
+}
+
+.about-cta-title {
+  font-family: var(--font-display), serif;
+  font-weight: 300;
+  font-size: clamp(34px, 5.2vw, 60px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--warm-porcelain);
+  margin: 0 0 20px;
+}
+
+.about-cta-body {
+  font-size: clamp(16px, 1.5vw, 18px);
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--warm-porcelain);
+  max-width: 36ch;
+  margin: 0 auto 32px;
+}
+
+.about-cta .cta-button {
+  color: var(--mineral-green);
+  background: var(--warm-porcelain);
+}
+
+.about-cta .cta-button:hover,
+.about-cta .cta-button:focus-visible {
+  background: #e4e0d6;
+  color: var(--mineral-green);
+  outline: none;
+}
+
+.about-cta-secondary {
+  display: inline-block;
+  margin-top: 22px;
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240, 237, 229, 0.88);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(240, 237, 229, 0.35);
+  padding-bottom: 3px;
+}
+
+.about-cta-secondary:hover,
+.about-cta-secondary:focus-visible {
+  color: var(--warm-porcelain);
+  border-bottom-color: rgba(240, 237, 229, 0.7);
+  outline: none;
+}
+
+@media (max-width: 900px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 28px;
+    padding-top: clamp(40px, 8vw, 64px);
+  }
+
+  .about-hero-title {
+    max-width: 14ch;
+  }
+
+  .about-hero-media {
+    min-height: clamp(240px, 58vw, 380px);
+    order: -1;
+  }
+
+  .about-hero-caption {
+    text-align: left;
+  }
+
+  .about-do-intro {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .about-founders-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-do-item {
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+    gap: 10px 14px;
+    padding: 18px 0;
+  }
+
+  .about-do-arrow {
+    display: none;
+  }
+
+  .about-founder-portrait {
+    aspect-ratio: 5 / 6;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-do-item {
+    transition: none;
+  }
+
+  .about-do-item:hover,
+  .about-do-item:focus-visible {
+    transform: none;
+  }
+}

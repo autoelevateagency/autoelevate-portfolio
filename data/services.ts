@@ -1,3 +1,5 @@
+import { SITE_ROUTES } from "@/data/site-config";
+
 export type ServiceId =
   | "websites"
   | "booking"
@@ -12,6 +14,7 @@ export type ServiceItem = {
   titleLines: readonly [string, string];
   description: string;
   visualLabel: string;
+  href?: string;
 };
 
 export const SERVICES: readonly ServiceItem[] = [
@@ -23,6 +26,7 @@ export const SERVICES: readonly ServiceItem[] = [
     description:
       "Premium custom websites designed specifically for automotive businesses.",
     visualLabel: "Premium automotive studio website in a browser frame",
+    href: SITE_ROUTES.automotiveWebsiteDesign,
   },
   {
     id: "booking",
@@ -31,6 +35,7 @@ export const SERVICES: readonly ServiceItem[] = [
     titleLines: ["Booking &", "Lead Systems"],
     description: "Turn website visitors into calls, inquiries and bookings.",
     visualLabel: "Booking interface and confirmed inquiry ticket",
+    href: SITE_ROUTES.automotiveWebsiteDesign,
   },
   {
     id: "google",
@@ -40,6 +45,7 @@ export const SERVICES: readonly ServiceItem[] = [
     description:
       "Make your business easier to find when local customers search for your services.",
     visualLabel: "Local search listing and map presence composition",
+    href: SITE_ROUTES.automotiveSeo,
   },
   {
     id: "social",
@@ -49,6 +55,7 @@ export const SERVICES: readonly ServiceItem[] = [
     description:
       "Build a professional digital presence that reflects the quality of your work.",
     visualLabel: "Editorial automotive social profile and content grid",
+    href: SITE_ROUTES.automotiveDigitalMarketing,
   },
   {
     id: "ads",
@@ -58,5 +65,6 @@ export const SERVICES: readonly ServiceItem[] = [
     description:
       "Reach local customers and generate new inquiries through targeted advertising.",
     visualLabel: "Premium local ad creative with campaign credits",
+    href: SITE_ROUTES.automotiveDigitalMarketing,
   },
 ] as const;
